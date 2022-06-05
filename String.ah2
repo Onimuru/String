@@ -1,9 +1,6 @@
-﻿;============ Auto-Execute ====================================================;
-;======================================================  Setting  ==============;
+#Requires AutoHotkey v2.0-beta
 
-#Requires AutoHotkey v2.0-a134-d3d43350
-
-;=======================================================  Other  ===============;
+;============ Auto-Execute ====================================================;
 
 PatchStringBase()
 PatchStringPrototype()
@@ -91,7 +88,7 @@ PatchStringBase() {
 		;* Copies and returns the selected text or optionally the whole line if no text is selected while preserving the clipboard content.
 	String.Base.DefineProp("Copy", {Call: (class, getLine := False, trim := False) => (Copy(getLine, trim))})
 
-	Copy(getLine, trim) {
+	Copy(getLine, strip) {
 		c := ClipboardAll()
 		A_Clipboard := ""
 
@@ -106,7 +103,7 @@ PatchStringBase() {
 			}
 		}
 
-		s := (trim) ? (Trim(A_Clipboard)) : (A_Clipboard)
+		s := (strip) ? (Trim(A_Clipboard)) : (A_Clipboard)
 		A_Clipboard := c
 
 		return (s)
