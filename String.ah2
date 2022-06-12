@@ -107,7 +107,7 @@ PatchStringBase() {
 			. commentCharacter)
 	}
 
-	;* String.Copy([getLine, getLine])
+	;* String.Copy([getLine, strip])
 	;* Description:
 		;* Copies and returns the selected text or optionally the whole line if no text is selected while preserving the clipboard content.
 	String.Base.DefineProp("Copy", {Call: (class, getLine := False, trim := False) => (Copy(getLine, trim))})
@@ -133,7 +133,7 @@ PatchStringBase() {
 		return (s)
 	}
 
-	;* String.Clipboard.Paste(string[, select])
+	;* String.Paste(string[, select])
 	;* Description:
 		;* Paste the provided text while preserving the clipboard content and optionally select the text that was pasted.
 	String.Base.DefineProp("Paste", {Call: (class, string, select := False) => (Paste(string, select))})
